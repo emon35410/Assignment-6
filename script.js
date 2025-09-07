@@ -3,6 +3,9 @@ const loadButton = ()=>{
     .then(res=>res.json())
     .then((json)=> displayButton(json.categories))
 }
+
+
+
 const loadLevelCard =(id)=>{
     const url =(`https://openapi.programming-hero.com/api/category/${id}`)
     fetch(url)
@@ -24,7 +27,7 @@ const displayCard =(plants)=>{
                                 <button class="bg-[#DCFCE7] px-3 py-1 text-sm text-green-800 rounded-full">${plant.category}</button>
                                 <h3 class="font-semibold">৳${plant.price}</h3>
                             </div>
-                            <button
+                            <button onclick = "addTocart('${plant.name}',${plant.price})"
                                 class="w-full bg-green-700 text-white py-2 rounded-full text-center font-medium hover:bg-green-400 hover:cursor-pointer transition">Add
                                 to Cart</button>
                         </div>
@@ -47,3 +50,29 @@ const displayButton = (categories)=>{
     })
 }
 loadButton()
+
+// for total price calculation
+let cart =[]
+const addTocart =(name,price)=>{
+    cart.push({name,price})
+    displayCart()
+}
+const displayCart =() =>{
+    const cartContainer = document.getElementById("cart-container")
+    const totalPrice = document.getElementById("total-price")
+    cartContainer.innerHTML = ""
+
+    let total =0;
+    cart.forEach(item=>{
+        total+= item.price
+        
+        const totalDiv = document.createElement("div")
+         totalDiv.innerHTML = `
+            <span>${item.name}</span> <br>
+            <span>Price:$${item.price}</span>
+        `
+        cartContainer.appendChild(totalDiv)
+        
+    })
+     totalPrice.innerText = `Total: $${total}`;
+}
