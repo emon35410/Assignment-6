@@ -9,6 +9,17 @@ const loadButton = () => {
         loadAllButton()
 }
 
+const manageSpinner = (status)=>{
+    if(status === true){
+        document.getElementById("spinner").classList.remove("hidden")
+        document.getElementById("card-container").classList.add("hidden")
+    }
+    else {
+         document.getElementById("spinner").classList.add("hidden")
+        document.getElementById("card-container").classList.remove("hidden")
+    }
+}
+
 const loadTreeDetails = (id)=>{
     const url = `https://openapi.programming-hero.com/api/plant/${id}`
     fetch(url)
@@ -63,6 +74,7 @@ const removeActive = ()=>{
     activeBtn.forEach((btn)=>btn.classList.remove("active"))
 }
 const loadLevelCard = (id) => {
+    manageSpinner(true);
     const url = (`https://openapi.programming-hero.com/api/category/${id}`)
     fetch(url)
         .then(res => res.json())
@@ -95,6 +107,7 @@ const displayCard = (plants) => {
     `
         cardContainer.append(cardDiv)
     })
+    manageSpinner(false)
 }
 
 
@@ -135,7 +148,7 @@ const displayCart = () => {
             <span>${item.name}</span> <br>
             <span>Price:৳${item.price}</span>
             <button onclick="removeFromCart(${index})" 
-                class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">X</button>
+                class=" text-red-500  rounded hover:bg-green-700">X</button>
         `
         cartContainer.appendChild(totalDiv)
 
