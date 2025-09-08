@@ -74,6 +74,16 @@
                 <div class="flex flex-col  md:flex-row md:justify-between md:items-start gap-8">
                     <div class="category w-full md:w-1/5">
                         <h2 class="text-xl font-bold mb-4">Categories</h2>
+                        <div>
+                            <button onclick="loadAllButton()"
+                                class="bg-green-700 text-white px-4 my-3 py-1 w-50 text-start rounded-lg hover:cursor-pointer hover:bg-red-300">
+                                All Trees
+                            </button>
+                            <div id="all-button-container" class="flex flex-wrap gap-2 md:flex-col md:items-start" >
+
+                            </div>
+                        </div>
+
                         <div id="button-container" class="flex flex-wrap gap-2 md:flex-col md:items-start">
 
 
@@ -82,9 +92,9 @@
 
 
                     <div id="card-container" class="grid grid-cols-1 md:grid-cols-3 gap-5 w-full md:w-4/5">
-                    
-                      
-                                        
+
+
+
                     </div>
                     <div
                         class="your-cart bg-white shadow-sm rounded-lg p-4 text-center space-y-3 w-full md:w-[220px] md:h-[420px]">
@@ -95,7 +105,7 @@
                         <div id="total-price" class="bg-[#DCFCE7] rounded-lg py-2">Total: $0</div>
                     </div>
                 </div>
-                
+
             </div>
         </section>
 

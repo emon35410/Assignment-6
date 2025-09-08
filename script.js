@@ -4,6 +4,35 @@ const loadButton = () => {
         .then((json) => displayButton(json.categories))
 }
 
+const loadAllButton =()=>{
+    fetch("https://openapi.programming-hero.com/api/plants")
+    .then(res=>res.json())
+    .then(button=>displayAllButton(button.plants))
+}
+const displayAllButton =(plant)=>{
+    const allButtonContainer = document.getElementById("card-container")
+    allButtonContainer.innerHTML=""
+    plant.forEach(card=>{
+        const plantDiv = document.createElement("div")
+        plantDiv.innerHTML =`
+            <div class="tree-card bg-white shadow-sm rounded-lg p-4 space-y-3">
+                            <img class="bg-[#EDEDED] rounded-lg w-full h-40 object-cover" src="${card.image}"
+                                alt="">
+                            <h2 class="text-2xl font-bold">${card.name}</h2>
+                            <p class="text-[#1f293763] text-sm">${card.description}</p>
+                            <div class="flex justify-between items-center">
+                                <button class="bg-[#DCFCE7] px-3 py-1 text-sm text-green-800 rounded-full">${card.category}</button>
+                                <h3 class="font-semibold">৳${card.price}</h3>
+                            </div>
+                            <button onclick = "addTocart('${card.name}',${card.price})"
+                                class="w-full bg-green-700 text-white py-2 rounded-full text-center font-medium hover:bg-green-400 hover:cursor-pointer transition">Add
+                                to Cart</button>
+                        </div>
+        `
+        allButtonContainer.append(plantDiv)
+    })
+}
+
 
 
 const loadLevelCard = (id) => {
@@ -21,7 +50,7 @@ const displayCard = (plants) => {
     <div class="tree-card bg-white shadow-sm rounded-lg p-4 space-y-3">
                             <img class="bg-[#EDEDED] rounded-lg w-full h-40 object-cover" src="${plant.image}"
                                 alt="">
-                            <h2 class="text-lg font-semibold">${plant.name}</h2>
+                            <h2 class="text-2xl font-bold">${plant.name}</h2>
                             <p class="text-[#1f293763] text-sm">${plant.description}</p>
                             <div class="flex justify-between items-center">
                                 <button class="bg-[#DCFCE7] px-3 py-1 text-sm text-green-800 rounded-full">${plant.category}</button>
