@@ -75,11 +75,8 @@
                     <div class="category w-full md:w-1/5">
                         <h2 class="text-xl font-bold mb-4">Categories</h2>
                         <div>
-                            <button onclick="loadAllButton()"
-                                class="bg-green-700 text-white px-4 my-3 py-1 w-50 text-start rounded-lg hover:cursor-pointer hover:bg-red-300">
-                                All Trees
-                            </button>
-                            <div id="all-button-container" class="flex flex-wrap gap-2 md:flex-col md:items-start" >
+
+                            <div id="all-button-container" class="flex flex-wrap gap-2 md:flex-col md:items-start">
 
                             </div>
                         </div>
@@ -108,11 +105,25 @@
 
             </div>
         </section>
+        <!-- Open the modal using ID.showModal() method -->
+        <!-- <button class="btn" onclick="my_modal_5.showModal()">open modal</button> -->
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <div id="details-container">
 
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
     </main>
     <footer>
-
+     
     </footer>
 
     <script src="script.js"></script>
