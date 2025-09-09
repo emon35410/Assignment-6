@@ -1,6 +1,4 @@
 
-
-
 const loadButton = () => {
     fetch("https://openapi.programming-hero.com/api/categories")
         .then(res => res.json())
@@ -146,7 +144,7 @@ const displayCart = () => {
         const totalDiv = document.createElement("div")
         totalDiv.innerHTML = `
             <span>${item.name}</span> <br>
-            <span>Price:৳${item.price}</span>
+            <span>Price:৳${item.price} x1</span>
             <button onclick="removeFromCart(${index})" 
                 class=" text-red-500  rounded hover:bg-green-700">X</button>
         `
